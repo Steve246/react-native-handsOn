@@ -2,65 +2,53 @@
 import MainContainer from '../../shared/components/MainContainer'
 // import { TouchableOpacity, Text, StyleSheet, ImageBackground, View } from 'react-native'
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, TextInput } from "react-native"
+import LottieView from 'lottie-react-native';
+import TitleLabel from "../../shared/components/TitleLabel";
+import FormButton from "../../shared/components/FormButton";
+import AppBackground from "../../shared/components/AppBackground";
+
 
 
 const WelcomePage = () => {
     return (
         <MainContainer>
-            <ImageBackground
-                source={require('../../../assets/img/background.jpg')}
-                rezieMode='cover'
-                style={styles.background}>
+            <AppBackground style={{
+                justifyContent: "space-evenly",
+                alignItems: 'center'
+            }}>
+                <LottieView
+                    autoPlay
+                    style={styles.image}
+                    source={require('../../../assets/img/117716-fusion.json')}
+                />
 
                 <View style={styles.titleContainer}>
-                    <Text style={styles.title}>POS System</Text>
-                    <Text style={styles.subtitle}>Simple Point Of Sales</Text>
+                    <TitleLabel text='POS System' />
+                    <TitleLabel subTitle text='Simple Point Of Sales' />
 
                 </View>
+                
+                
 
-                <TouchableOpacity style={styles.button}>
-                    <Text>Login</Text>
-                </TouchableOpacity>
+                <FormButton label='Sign In' onClick={() => {
+                }}></FormButton>
 
-            </ImageBackground>
+            </AppBackground>
 
         </MainContainer>
     )
 }
 
+
 const styles = StyleSheet.create({
     image: {
         width: 200,
         height: 200,
-        alignItems: 'center'
-    },
-    background: {
-        flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
     },
     titleContainer: {
-        alignItems: "center"
+        alignItems: "center",
     },
-    title: {
-        fontSize: 32,
-        fontWeight: 'bold',
-        color: 'black',
-    },
-    subtitle: {
-        fontSize: 16,
-        color: 'black'
-    },
-    button: {
-        alignItems: 'center',
-        backgroundColor: 'green',
-        padding: 10,
-        borderRadius: 5,
-        alignSelf: 'stretch',
-        margin: 16
-    }
 });
-
 
 export default WelcomePage
