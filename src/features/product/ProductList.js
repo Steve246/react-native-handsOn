@@ -37,7 +37,7 @@ const ProductList = () => {
   return (
     <MainContainer>
       <AppBackground>
-        <View style={{ margin: theme.spacing.s }}>
+        <View style={{ margin: theme.spacing.m }}>
           <HeaderPageLabel text={"Product"} />
 
           <FlatList
