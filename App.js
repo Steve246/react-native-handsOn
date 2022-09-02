@@ -17,15 +17,15 @@ export default function App() {
     return null;
   }
   return (
-    <SafeAreaProvider>
-      <DependencyProvider services={services}>
+    <DependencyProvider services={services}>
+      <SafeAreaProvider>
         <ThemeProvider>
           {/* <WelcomePage /> */}
           {/* <LoginPage /> */}
           {/* <ProductList /> */}
           <HomePage />
         </ThemeProvider>
-      </DependencyProvider>
-    </SafeAreaProvider>
+      </SafeAreaProvider>
+    </DependencyProvider>
   );
 }

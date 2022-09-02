@@ -7,6 +7,10 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 // import { theme } from "../../shared/Theme";
 import { useTheme } from "../../shared/context/ThemeContext";
+import { Header } from "react-native/Libraries/NewAppScreen";
+import PromoItem from "./component/PromoItem";
+import PromoView from "./component/PromoView";
+import MenuView from "./component/MenuView";
 
 const HomePage = () => {
   const theme = useTheme();
@@ -14,7 +18,7 @@ const HomePage = () => {
   return (
     <MainContainer>
       <AppBackground>
-        <View>
+        <View style={{ flex: 1, margin: theme.spacing.s }}>
           <HeaderPageLabel text="POS" />
 
           <View style={styles.container}>
@@ -53,6 +57,16 @@ const HomePage = () => {
                 <Text style={styles.text}> Add {"\n"} Bill</Text>
               </TouchableOpacity>
             </View>
+          </View>
+
+          <HeaderPageLabel text="Promo" />
+          <View style={{ flex: 1 }}>
+            <PromoView />
+          </View>
+
+          <HeaderPageLabel text="Menu List" />
+          <View style={{ flex: 3 }}>
+            <MenuView />
           </View>
         </View>
       </AppBackground>
