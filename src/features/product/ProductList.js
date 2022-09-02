@@ -10,6 +10,7 @@ import MainContainer from "../../shared/components/MainContainer";
 
 import AppBackground from "../../shared/components/AppBackground";
 import { FlatList, View } from "react-native";
+import HeaderPageLabel from "../../shared/components/HeaderPageLabel";
 
 const ProductList = () => {
   const theme = useTheme();
@@ -37,6 +38,8 @@ const ProductList = () => {
     <MainContainer>
       <AppBackground>
         <View style={{ margin: theme.spacing.s }}>
+          <HeaderPageLabel text={"Product"} />
+
           <FlatList
             data={product}
             renderItem={renderItem}
