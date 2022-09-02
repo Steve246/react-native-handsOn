@@ -6,8 +6,8 @@ const Item = ({ productName }) => {
   const theme = useTheme();
   const styles = styling(theme);
   return (
-    <View>
-      <Text> {productName} </Text>
+    <View style={styles.item}>
+      <Text style={styles.itemText}>{productName}</Text>
     </View>
   );
 };
