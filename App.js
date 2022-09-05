@@ -6,7 +6,9 @@ import UseAppFont from "./src/shared/hook/UseAppFont";
 import ProductList from "./src/features/product/ProductList";
 import { serviceFactory } from "./src/services/ServiceFactory";
 import { DependencyProvider } from "./src/shared/context/DepedencyContext";
-import HomePage from "./src/features/home/HomePage";
+
+import AppRouter from "./src/navigation/AppRouter";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   const fonts = UseAppFont();
@@ -20,10 +22,13 @@ export default function App() {
     <DependencyProvider services={services}>
       <SafeAreaProvider>
         <ThemeProvider>
-          {/* <WelcomePage /> */}
-          {/* <LoginPage /> */}
-          {/* <ProductList /> */}
-          <HomePage />
+          <NavigationContainer>
+            <AppRouter />
+
+            {/* <WelcomePage /> */}
+            {/* <LoginPage /> */}
+            {/* <ProductList /> */}
+          </NavigationContainer>
         </ThemeProvider>
       </SafeAreaProvider>
     </DependencyProvider>

@@ -1,10 +1,23 @@
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import { useTheme } from "../../../shared/context/ThemeContext";
 import { Ionicons } from "@expo/vector-icons";
+import ProductList from "../../product/ProductList";
 
 const MenuItem = ({ menus }) => {
   const theme = useTheme();
   const styles = styling(theme);
+
+  // blm selesai
+
+  const renderMenuItem = () => {
+    if (product.id !== -1) {
+      return (
+        <TouchableOpacity>
+          <View></View>
+        </TouchableOpacity>
+      );
+    }
+  };
   return (
     <TouchableOpacity style={{ alignItems: "center" }}>
       <Text>{menus.menu}</Text>
