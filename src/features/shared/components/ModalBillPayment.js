@@ -1,28 +1,22 @@
-import { useState } from "react";
 import { Button, Modal, StyleSheet, Text, View, TextInput } from "react-native";
 
 import { useTheme } from "../context/ThemeContext";
-import FormButton from "./FormButton";
 
 const ModalBillPayment = ({ visible, onPress }) => {
   const theme = useTheme();
   const styles = styling(theme);
-  const [pin, setPin] = useState();
   return (
     <View style={styles.mainContainer}>
       <Modal visible={visible} animationType="slide" transparent={true}>
         <View style={styles.mainContainer}>
           <View style={styles.modalContainer}>
             <Text style={styles.headline}> Please Input Pin </Text>
-            <Text style={styles.headline}> {`user id ${pin}`} </Text>
+            <Text style={styles.headline}> (user Id 123) </Text>
             <TextInput
-              // placeholder="Password"
+              placeholder="Password"
               style={styles.textInput}
-              onChangeText={setPin}
-              value={pin}
             ></TextInput>
-            {/* <Button style={styles.button} onPress={onPress} title="Back" /> */}
-            <FormButton onClick={onPress} label={"submit"} />
+            <Button onPress={onPress} title="Submit" />
           </View>
         </View>
       </Modal>
@@ -66,18 +60,9 @@ const styling = (theme) =>
 
       alignSelf: "stretch",
       padding: 10,
-      marginLeft: 80,
+      marginLeft: 90,
       margin: 5,
       marginRight: 50,
-    },
-
-    button: {
-      alignItems: "center",
-      backgroundColor: theme.colors.primary,
-      padding: theme.spacing.s,
-      borderRadius: theme.radius.m,
-      alignSelf: "stretch",
-      margin: theme.spacing.m,
     },
   });
 
