@@ -12,10 +12,15 @@ const MenuItem = ({ menus }) => {
   const renderMenuItem = () => {
     if (product.id !== -1) {
       return (
-        <TouchableOpacity>
-          <View></View>
+        <TouchableOpacity style={styles.menuContainer}>
+          <View style={[styles.baseView, styles.menuOval]}>
+            <FontAwesome name={product.icon} size={32} color="white" />
+          </View>
+          <Text style={styles.textMenu}>{product.menu}</Text>
         </TouchableOpacity>
       );
+    } else {
+      return <View style={styles.baseView}></View>;
     }
   };
   return (
