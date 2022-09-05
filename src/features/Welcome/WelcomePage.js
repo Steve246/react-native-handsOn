@@ -24,7 +24,7 @@ const WelcomePage = () => {
         <LottieView
           autoPlay
           style={styles.image}
-          source={require("../../../assets/img/110304-popeye.json")}
+          source={require("../../../assets/img/117716-fusion.json")}
         />
         <FormButton
           label="SIGN IN"
