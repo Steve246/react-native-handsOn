@@ -13,6 +13,7 @@ export const theme = {
     black: pallete.black,
     secondary: pallete.lightGrey,
     foreground: pallete.grey,
+    logoColor: pallete.orange,
   },
   spacing: {
     xs: 4,
