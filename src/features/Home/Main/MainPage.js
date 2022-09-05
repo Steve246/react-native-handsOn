@@ -14,9 +14,10 @@ import PromoView from "./components/PromoView";
 import MenuView from "./components/MenuView";
 import { useNavigation } from "@react-navigation/native";
 import { ROUTE } from "../../shared/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalDialog from "../../shared/components/ModalDialog";
 import ModalBillPayment from "../../shared/components/ModalBillPayment";
+import { useRoute } from "@react-navigation/native";
 
 const MainPage = () => {
   const theme = useTheme();
@@ -24,7 +25,14 @@ const MainPage = () => {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
 
-  const [billVisible, setBillVisible] = useState(false);
+  // const [billVisible, setBillVisible] = useState(false);
+  const route = useRoute();
+
+  useEffect(() => {
+    if (route.params?.message) {
+      console.log(route.params.message);
+    }
+  }, [route.params]);
 
   return (
     <MainContainer>
@@ -36,9 +44,9 @@ const MainPage = () => {
         />
         {modalVisible && <ModalDialog onPress={() => setModalVisible(false)} />}
 
-        {billVisible && (
+        {/* {billVisible && (
           <ModalBillPayment onPress={() => setBillVisible(false)} />
-        )}
+        )} */}
 
         <ScrollView>
           <View style={{ flex: 1, margin: theme.spacing.s }}>
@@ -72,7 +80,11 @@ const MainPage = () => {
               <View style={styles.menuContainer}>
                 <TouchableOpacity
                   style={styles.touchAble}
-                  onPress={() => setBillVisible(true)}
+                  onPress={() => {
+                    navigation.navigate(ROUTE.PIN, {
+                      prevPage: ROUTE.HOMEPAGE,
+                    });
+                  }}
                 >
                   <FontAwesome
                     name="money"
