@@ -1,17 +1,47 @@
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Animated,
+  View,
+} from "react-native";
 import { useTheme } from "../../../shared/context/ThemeContext";
+import Swipeable from "react-native-gesture-handler/Swipeable";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { MaterialIcons } from "@expo/vector-icons";
 
-import { StyleSheet, Text, View } from "react-native";
-
-const Item = ({ productName }) => {
+const Item = ({ productName, idx, onDelete, refRow, closeRow }) => {
   const theme = useTheme();
   const styles = styling(theme);
+  const leftSwipe = (progress, dragX) => {
+    const scale = dragX.interpolate({
+      inputRange: [0, 100],
+      outputRange: [0, 1],
+    });
+    return (
+      <TouchableOpacity onPress={onDelete}>
+        <Animated.View
+          style={[styles.deleteBox, { transform: [{ scale: scale }] }]}
+        >
+          <MaterialIcons name="delete-forever" size={24} color="white" />
+        </Animated.View>
+      </TouchableOpacity>
+    );
+  };
   return (
-    <View style={styles.item}>
-      <Text style={styles.itemText}>{productName}</Text>
-    </View>
+    <GestureHandlerRootView>
+      <Swipeable
+        renderLeftActions={leftSwipe}
+        ref={(ref) => refRow(idx, ref)}
+        onSwipeableWillOpen={closeRow}
+      >
+        <View style={styles.item}>
+          <Text style={styles.itemText}>{productName}</Text>
+        </View>
+      </Swipeable>
+    </GestureHandlerRootView>
   );
 };
-
 const styling = (theme) =>
   StyleSheet.create({
     item: {
@@ -25,6 +55,13 @@ const styling = (theme) =>
       fontSize: 14,
       color: theme.colors.foreground,
       fontFamily: "Poppins-Regular",
+    },
+    deleteBox: {
+      backgroundColor: "red",
+      justifyContent: "center",
+      alignItems: "center",
+      width: 64,
+      flex: 1,
     },
   });
 
